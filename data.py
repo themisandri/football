@@ -3,6 +3,7 @@ import csv
 import requests
 
 
+
 def get_data():
     url = "https://soccer-football-info.p.rapidapi.com/live/basic/"
 
@@ -40,6 +41,19 @@ def transform_data(data):
     df = pd.concat([df, df_teamA['stats.shoots.t_teamA']], axis=1)
     df = pd.concat([df, df_teamB['stats.shoots.t_teamB']], axis=1)
 
+    #on target shoots
+    df = pd.concat([df, df_teamA['stats.shoots.on_teamA']], axis=1)
+    df = pd.concat([df, df_teamB['stats.shoots.on_teamB']], axis=1)
+
+    #total corners
+    df = pd.concat([df, df_teamA['stats.corners.t_teamA']], axis=1)
+    df = pd.concat([df, df_teamB['stats.corners.t_teamB']], axis=1)
+
+    #red cards
+    df = pd.concat([df, df_teamA['stats.fouls.r_c_teamA']], axis=1)
+    df = pd.concat([df, df_teamB['stats.fouls.r_c_teamB']], axis=1)
+
+
     #delete row where timer is 0
     df = df[df['timer'] != "00:00"]
 
@@ -48,5 +62,20 @@ def transform_data(data):
 
     #add shoots team A and team B
     df['shoots_total'] = df['stats.shoots.t_teamA'].astype(int) + df['stats.shoots.t_teamB'].astype(int)
+    
+    #on target shoots total
+    df['shoots_on_total'] = df['stats.shoots.on_teamA'].astype(int) + df['stats.shoots.on_teamB'].astype(int)
+
+    #calculate on target shoots percentage
+    df['shoots_on_percentage'] = df['shoots_on_total'] / df['shoots_total']
+
+    #calculate corners total
+    df['corners_total'] = df['stats.corners.t_teamA'].astype(int) + df['stats.corners.t_teamB'].astype(int)
+
+    #calculate red cards total
+    df['red_cards_total'] = df['stats.fouls.r_c_teamA'].astype(int) + df['stats.fouls.r_c_teamB'].astype(int)
+
+    #delete columns
+    df = df.drop(['dominance_index','teamA','teamB','championship'], axis=1)
 
     return df
