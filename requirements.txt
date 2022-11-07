@@ -1,0 +1,5 @@
+flask
+pandas
+telegram
+requests
+gunicorn

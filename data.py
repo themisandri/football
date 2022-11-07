@@ -62,9 +62,16 @@ def transform_data(data):
 
     #add shoots team A and team B
     df['shoots_total'] = df['stats.shoots.t_teamA'].astype(int) + df['stats.shoots.t_teamB'].astype(int)
-    
+
+    #if shoots on is none, then set to 0
+    df['stats.shoots.on_teamA'] = df['stats.shoots.on_teamA'].fillna(0)
+    df['stats.shoots.on_teamB'] = df['stats.shoots.on_teamB'].fillna(0)
+
     #on target shoots total
     df['shoots_on_total'] = df['stats.shoots.on_teamA'].astype(int) + df['stats.shoots.on_teamB'].astype(int)
+
+    #if shoots total is 0, then add 1 to avoid division by zero
+    df['shoots_total'] = df['shoots_total'].replace(0, 1)
 
     #calculate on target shoots percentage
     df['shoots_on_percentage'] = df['shoots_on_total'] / df['shoots_total']
@@ -75,7 +82,5 @@ def transform_data(data):
     #calculate red cards total
     df['red_cards_total'] = df['stats.fouls.r_c_teamA'].astype(int) + df['stats.fouls.r_c_teamB'].astype(int)
 
-    #delete columns
-    df = df.drop(['dominance_index','teamA','teamB','championship'], axis=1)
 
     return df

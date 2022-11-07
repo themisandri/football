@@ -3,6 +3,7 @@
 from algorith import algorithm
 from flask import Flask, jsonify, request, render_template
 from data import get_data, transform_data
+from telegram import telegram_bot_sendtext
 import sys
 
 app = Flask(__name__)
@@ -27,6 +28,8 @@ def recommendations():
     data = get_data()
     df = transform_data(data)
     results = algorithm(df)
+    if results:
+        telegram_bot_sendtext(results)
     return results
 
 if __name__ == '__main__':
