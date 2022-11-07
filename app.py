@@ -9,7 +9,7 @@ import sys
 app = Flask(__name__)
 
 #hello world
-@app.route('/')
+@app.route('/', methods=['GET'])
 def hello_world():
     return 'Hello, World!'
 
