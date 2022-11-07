@@ -83,6 +83,6 @@ def transform_data(data):
     df['red_cards_total'] = df['stats.fouls.r_c_teamA'].astype(int) + df['stats.fouls.r_c_teamB'].astype(int)
 
     #delete columns
-    df = df.drop(['dominance_index','teamA','teamB'])
+    df = df.drop(['dominance_index','teamA','teamB'], axis=1)
 
     return df
