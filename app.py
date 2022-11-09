@@ -3,7 +3,7 @@
 from algorith import algorithm
 from flask import Flask, jsonify, request, render_template
 from data import get_data, transform_data
-from telegram import telegram_bot_sendtext
+from bot_message import telegram_bot_sendtext
 import sys
 
 app = Flask(__name__)
