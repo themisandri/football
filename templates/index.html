@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-{% for table in tables %}
-            {{titles[loop.index]}}
-            {{ table|safe }}
-{% endfor %}
-</body>
+<!doctype html>
+<html>
+  <head>
+    <title>Live Matches</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap_table.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Live Matches</h1>
+      <hr>
+      {% block content %}{% endblock %}
+    </div>
+    {% block scripts %}{% endblock %}
+  </body>
 </html>
