@@ -22,9 +22,10 @@ def show_matches():
     df = transform_data(data)
     #print dataframe with flask
     #return render_template('index.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
-    df = df[['date','timer','name_teamA','name_teamB','shoots_total','shoots_on_total','shoots_on_percentage','corners_total','red_cards_total','bet365_url']]
+    results = algorithm(df)
+    df = df[['id','date','timer','name_teamA','name_teamB','shoots_total','shoots_on_total','shoots_on_percentage','corners_total','red_cards_total','bet365_url']]
     return render_template("bootstrap_table.html", column_names=df.columns.values, row_data=list(df.values.tolist()),
-                           link_column="bet365_url", zip=zip, title="Live Matches")
+                           link_column="bet365_url", zip=zip, title="Live Matches", filtered=results)
     
 
 #route for algorithm
