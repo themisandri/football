@@ -25,12 +25,12 @@ pip install flask requests
 python app.py
 ```
 
-#Usage
+# Usage
 
 Once the Flask app is running, the bot will start retrieving live football data from the Bet365 API. It will then filter the data based on the criteria specified in the config.py file.
 
 When the bot finds a match that meets the criteria, it will send a notification to the user. The notification can be in the form of an email, a text message, or a push notification, depending on how you configure it.
 
-#License
+# License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
