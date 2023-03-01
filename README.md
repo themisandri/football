@@ -7,7 +7,7 @@ This is a Python bot made with Flask that gets live Bet365 data and sends notifi
 - Python 3.6 or higher
 - Flask
 - Requests
-- Bet365 API credentials
+- Rapid API credentials
 
 ## Installation
 1. Clone the repository to your local machine:
@@ -24,6 +24,35 @@ pip install flask requests
 ```bash
 python app.py
 ```
+# Install using Docker
+## Prerequisites
+Before installing the app, make sure that you have the following installed on your machine:
+
+- Docker
+- make
+
+## Installation
+1. Clone the repository to your local machine:
+```bash
+git clone https://github.com/themisandri/football.git
+```
+2. Navigate to the app directory:
+```bash
+cd repo-name/app-directory
+```
+3. Build the Docker image:
+```bash
+make build
+```
+4. Run the app using Docker:
+```bash
+make run
+```
+
+This will start the app in a Docker container and you can access it at http://localhost:5555.
+
+# Configuration
+The bot can be configured by editing the config.py file and adding the 'api_key' from Rapid API.
 
 # Usage
 

@@ -1,6 +1,7 @@
 import pandas as pd
 import csv
 import requests
+import config
 
 
 
@@ -8,9 +9,8 @@ def get_data():
     url = "https://soccer-football-info.p.rapidapi.com/live/basic/"
 
     querystring = {"l":"en_US","e":"no"}
-
     headers = {
-        "X-RapidAPI-Key": "ee15e87846mshadd7763b720883fp18db94jsn36d2690f3a98",
+        "X-RapidAPI-Key": config.api_key,
         "X-RapidAPI-Host": "soccer-football-info.p.rapidapi.com"
     }
 
