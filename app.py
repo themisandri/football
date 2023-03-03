@@ -29,14 +29,15 @@ def show_matches():
     
 
 #route for algorithm
-@app.route('/api/algorithm', methods=['GET'])
+@app.route('/algorithm', methods=['GET'])
 def recommendations():
     data = get_data()
     df = transform_data(data)
     results = algorithm(df)
     if results:
         telegram_bot_sendtext(results)
-    return jsonpickle.encode(results)
+    return render_template("filtered.html", filtered=results)
+    
 
 
 if __name__ == '__main__':
