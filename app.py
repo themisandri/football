@@ -1,5 +1,3 @@
-'''Create an api with flask'''
-
 from algorith import algorithm
 from flask import Flask, jsonify, request, render_template
 from data import get_data, transform_data

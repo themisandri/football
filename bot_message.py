@@ -1,4 +1,3 @@
-#send matches as telegram message
 import telegram
 import config
 

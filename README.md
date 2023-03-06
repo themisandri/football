@@ -1,6 +1,6 @@
 # Live Bet365 Football Data Bot
 
-This is a Python bot made with Flask that gets live Bet365 data and sends notifications about interesting football matches. It uses the Bet365 API to retrieve data about football matches in real-time, and then it filters the matches based on certain criteria and sends notifications to the user about matches that meet those criteria.
+This is a Python bot made with Flask that gets live Bet365 data and sends notifications about interesting football matches. It uses the [Soccer Football Info API](https://rapidapi.com/soccerfootball-info-soccerfootball-info-default/api/soccer-football-info/) to retrieve data about football matches in real-time, and then it filters the matches based on certain criteria and sends notifications to the user about matches that meet those criteria.
 
 # Getting Started
 ## Requirements
@@ -52,13 +52,18 @@ make run
 This will start the app in a Docker container and you can access it at http://localhost:5555.
 
 # Configuration
-The bot can be configured by editing the config.py file and adding the 'api_key' from Rapid API.
+The bot can be configured by editing the config.py file and adding the 'api_key' from Rapid API and the telegram bot credentials.
 
 # Usage
 
-Once the Flask app is running, the bot will start retrieving live football data from the Bet365 API. It will then filter the data based on the criteria specified in the config.py file.
+Once the Flask app is running, the bot will start retrieving live football data from the Bet365 API. To do that, we have to create a cronjob calling the specific endpoint
+## Example 
+```bash
+*/5 * * * * /usr/bin/curl -X POST http://localhost:5555/algorithm
+```
 
-When the bot finds a match that meets the criteria, it will send a notification to the user. The notification can be in the form of an email, a text message, or a push notification, depending on how you configure it.
+When the bot finds a match that meets the criteria, it will send a telegram notification to the user.
+Alternative, you can use the web app and get the list of live matches along with the recommendations at the top of the page.
 
 # License
 
