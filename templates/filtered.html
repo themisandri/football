@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% if filtered %}
+<div class="container mt-5 pt-5">
+<h1>{{filtered}}</h1>
+</div>
+{% endif %}
+{% if not filtered %}
+<div class="container mt-5 pt-5">
+<h1>No recommendations</h1>
+</div>
+{% endif %}
+
+{% endblock %}

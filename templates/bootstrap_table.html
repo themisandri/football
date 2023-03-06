@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% if filtered %}
+<div class="container mt-5 pt-5">
+<h1>{{filtered}}</h1>
+</div>
+{% endif %}
+{% if not filtered %}
+<div class="container mt-5 pt-5">
+<h1>No recommendations</h1>
+</div>
+{% endif %}
+
+<div class="container mt-5 mb-5 pb-5">
+<table id="data" style="width:100%"
+class="table table-striped">
+    <thead>
+    <tr>
+        {% for col in column_names %}
+        <th>{{col}}</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in row_data %}
+    <tr>
+        {% for col, row_ in zip(column_names, row) %}
+        {% if col == "red_cards_total" %}
+        {% if row_ > 0 %}
+        <td class="table-danger">
+            {{row_}}
+        </td>
+        {% else %}
+        <td>
+            {{row_}}
+        </td>
+        {% endif %}
+        {% elif col == link_column %}
+        <td>
+            <form action={{ row_ }} method="get" target="_blank">
+                <button type="submit">Click me</button>
+             </form>
+        </td>
+        {% else %}
+        <td>{{row_}}</td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
