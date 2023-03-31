@@ -1,21 +1,14 @@
 {% extends "index.html" %}
 
 {% block content %}
-<<<<<<< HEAD
 <section class="bg-dark">
 {% if filtered %}
 <div class="container mt-5 pt-5">
 <h1 class="recommendations">{{filtered}}</h1>
-=======
-{% if filtered %}
-<div class="container mt-5 pt-5">
-<h1>{{filtered}}</h1>
->>>>>>> 8535f29859179ed6f094c53f5246da4c1d3f51b7
 </div>
 {% endif %}
 {% if not filtered %}
 <div class="container mt-5 pt-5">
-<<<<<<< HEAD
 <h1 class="recommendations">No recommendations</h1>
 </div>
 {% endif %}
@@ -25,15 +18,6 @@
 <div class="container mt-5 mb-5 pb-5">
 <table id="data" style="width:100%"
 class="table table-striped table-dark">
-=======
-<h1>No recommendations</h1>
-</div>
-{% endif %}
-
-<div class="container mt-5 mb-5 pb-5">
-<table id="data" style="width:100%"
-class="table table-striped">
->>>>>>> 8535f29859179ed6f094c53f5246da4c1d3f51b7
     <thead>
     <tr>
         {% for col in column_names %}
