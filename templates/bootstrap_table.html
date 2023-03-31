@@ -1,20 +1,23 @@
 {% extends "index.html" %}
 
 {% block content %}
+<section class="bg-dark">
 {% if filtered %}
 <div class="container mt-5 pt-5">
-<h1>{{filtered}}</h1>
+<h1 class="recommendations">{{filtered}}</h1>
 </div>
 {% endif %}
 {% if not filtered %}
 <div class="container mt-5 pt-5">
-<h1>No recommendations</h1>
+<h1 class="recommendations">No recommendations</h1>
 </div>
 {% endif %}
 
+
+
 <div class="container mt-5 mb-5 pb-5">
 <table id="data" style="width:100%"
-class="table table-striped">
+class="table table-striped table-dark">
     <thead>
     <tr>
         {% for col in column_names %}
@@ -28,7 +31,7 @@ class="table table-striped">
         {% for col, row_ in zip(column_names, row) %}
         {% if col == "red_cards_total" %}
         {% if row_ > 0 %}
-        <td class="table-danger">
+        <td class="bg-danger">
             {{row_}}
         </td>
         {% else %}
@@ -51,4 +54,5 @@ class="table table-striped">
     </tbody>
 </table>
 </div>
+</section>
 {% endblock %}

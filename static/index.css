@@ -1,6 +1,29 @@
-h1 {
+.recommendations {
   color: red; 
 }
 
-  
+.dataTables_filter {
+  color: white;
+} 
+
+.dataTables_length {
+  color: white;
+}
+
+.dataTables_info {
+  color: white;
+}
+
+.page-link {
+  color: white;
+  background-color: #212529!important;
+}
+
+.page-item.active .page-link {
+  border-color: #fff;
+}
+
+.page-link :hover {
+  color: white;
+}
  
