@@ -31,11 +31,7 @@ class="table table-striped table-dark">
         {% for col, row_ in zip(column_names, row) %}
         {% if col == "red_cards_total" %}
         {% if row_ > 0 %}
-<<<<<<< HEAD
         <td class="bg-danger">
-=======
-        <td class="table-danger">
->>>>>>> 8535f29859179ed6f094c53f5246da4c1d3f51b7
             {{row_}}
         </td>
         {% else %}
