@@ -1,6 +1,6 @@
-from algorith import algorithm
+from algorith import algorithm, model_predict
 from flask import Flask, jsonify, request, render_template
-from data import get_data, transform_data
+from data import get_data, create_features, transform_data
 from bot_message import telegram_bot_sendtext
 import jsonpickle
 import sys
@@ -36,6 +36,16 @@ def recommendations():
         telegram_bot_sendtext(results)
     return render_template("filtered.html", filtered=results)
     
+#route for algorithm
+@app.route('/model', methods=['GET'])
+def model():
+    data = get_data()
+    df = create_features(data)
+    results, match_to_bet = model_predict(data, df)
+    #if results:
+        #telegram_bot_sendtext(results)
+    return render_template("model.html",column_names=match_to_bet.columns.values, row_data=list(match_to_bet.values.tolist()),
+                            zip=zip, title="Live Matches", predictions=results)
 
 
 if __name__ == '__main__':
